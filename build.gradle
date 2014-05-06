@@ -44,10 +44,13 @@ sourceSets {
 
 ext {
     dropwizardVersion = "0.7.0"
+    junitVersion = "4.11"
 }
 
 dependencies {
     compile "io.dropwizard:dropwizard-core:$dropwizardVersion"
+
+    testCompile "junit:junit:$junitVersion"
 }
 
 task wrapper(type: Wrapper) {
