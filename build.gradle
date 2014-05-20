@@ -45,10 +45,13 @@ sourceSets {
 ext {
     dropwizardVersion = "0.7.0"
     junitVersion = "4.11"
+    lombokVersion = "1.12.6"
 }
 
 dependencies {
     compile "io.dropwizard:dropwizard-core:$dropwizardVersion"
+
+    compile "org.projectlombok:lombok:$lombokVersion"
 
     testCompile "junit:junit:$junitVersion"
 }
