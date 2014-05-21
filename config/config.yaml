@@ -1,0 +1,13 @@
+plugins:
+    - name: check_disk
+      path: /home/rmuhamedgaliev/Development/Projects/SystemGatherer/scripts/check_disk.py
+      arguments:
+        - /
+        - 20
+        - 40
+    - name: check_memory
+      path: /home/rmuhamedgaliev/Development/Projects/SystemGatherer/scripts/memory_info.py
+      arguments:
+        - 20
+        - 40
+
