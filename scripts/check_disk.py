@@ -1,13 +1,10 @@
+#!/usr/bin/python3
+
 __author__ = 'rmuhamedgaliev'
 
-import time
 import sys
 import json
-import os
-
 import psutil
-
-name = "check_disk"
 
 if len(sys.argv) == 4:
     try:
@@ -20,49 +17,23 @@ if len(sys.argv) == 4:
         }
         free_percent = 100 - float(disk[3])
         if free_percent > float(sys.argv[2]) and free_percent > int(sys.argv[3]):
-            status = {
-                "name": name,
-                "status": "ok",
-                "date": int(round(time.time() * 1000)),
-                "info": {
-                    "partition": point
-                }
-            }
-            print(json.dumps(status))
+            print(json.dumps(point))
             exit(0)
         if free_percent < int(sys.argv[2]):
-            status = {
-                "name": name,
-                "status": "warning",
-                "date": int(round(time.time() * 1000)),
-                "info": {
-                    "partition": point
-                }
-            }
-            print(json.dumps(status))
+            print(json.dumps(point))
             exit(1)
         if free_percent < int(sys.argv[3]):
-            status = {
-                "name": name,
-                "status": "critical",
-                "date": int(round(time.time() * 1000)),
-                "info": {
-                    "partition": point
-                }
-            }
-            print(json.dumps(status))
+            print(json.dumps(point))
             exit(2)
     except FileNotFoundError:
         status = {
-            "name": name,
-            "status": "unknown",
-            "date": int(round(time.time() * 1000)),
-            "info": {
-                "message": "unknown path"
-            }
+            "message": "unknown path"
         }
         print(json.dumps(status))
         exit(3)
+else :
+    print("Use argument for work with script.\nSample ./check_disk.py [path] [warning_level] [critical_level]\n./check_disk.py / 20 40")
+    exit(3)
 
 
 
