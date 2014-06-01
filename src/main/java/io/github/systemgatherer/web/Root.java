@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import io.github.systemgatherer.configuration.Plugin;
 import io.github.systemgatherer.plugins.IExecutor;
 import io.github.systemgatherer.plugins.impl.Executor;
+import io.github.systemgatherer.response.Response;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -20,6 +21,7 @@ import java.util.Map;
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 public class Root {
+
     private final List<Plugin> plugins;
     private Map<String, Plugin> pluginMap = new HashMap<>();
 
@@ -35,7 +37,7 @@ public class Root {
 
     @GET
     @Timed
-    public String root(@QueryParam("name") String name) {
+    public Response root(@QueryParam("name") String name) {
         return executor.runScript(pluginMap.get(name));
     }
 }

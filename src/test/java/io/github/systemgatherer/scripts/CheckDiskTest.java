@@ -13,7 +13,7 @@ public class CheckDiskTest {
         String[] cmd = {
                 "/bin/bash",
                 "-c",
-                "echo password | python3 scripts/check_disk.py / 40 20"
+                "echo output | scripts/check_disk.py / 40 20"
         };
 
         try {
