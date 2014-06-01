@@ -65,6 +65,6 @@ if len(sys.argv) == 4:
         }
         print(json.dumps(status))
         exit(3)
-else :
+else:
     print("Use argument for work with script.\nSample ./check_disk.py [path] [warning_level] [critical_level]\n./check_disk.py / 20 40")
     exit(3)

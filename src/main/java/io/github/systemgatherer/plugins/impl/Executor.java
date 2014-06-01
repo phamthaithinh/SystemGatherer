@@ -46,11 +46,11 @@ public class Executor implements IExecutor {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        return buildResponse(toJsonObject(result), code);
+        return buildResponse(toJsonObject(result), code, plugin.getName());
     }
 
-    private Response buildResponse(Object info, int code) {
-        return new Response(code, new Date(), info);
+    private Response buildResponse(Object info, int code, String name) {
+        return new Response(code, new Date(), info, name);
     }
 
     private Object toJsonObject(String info) {
